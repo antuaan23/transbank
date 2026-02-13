@@ -1,0 +1,21 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      target: development
+    container_name: transbank_backend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - transbank-network
+
+networks:
+  transbank-network:
+    driver: bridge

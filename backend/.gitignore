@@ -1,0 +1,55 @@
+# Archivos compilados
+/dist
+/build
+*.js.map
+
+# Dependencias
+/node_modules
+package-lock.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Variables de entorno (CRÍTICO - Contiene credenciales de Transbank)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDEs y editores
+/.idea
+/.vscode
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Testing
+/coverage
+/.nyc_output
+.jest-cache
+
+# Archivos temporales
+*.tmp
+*.temp
+/tmp
+/temp
+
+# Archivos de prueba personalizados
+prueba.txt
+*.test.local.*
