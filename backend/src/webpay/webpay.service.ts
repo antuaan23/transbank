@@ -1,30 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { Options, Environment, WebpayPlus } from 'transbank-sdk';
+import { Inject, Injectable } from '@nestjs/common';
+import { WebpayPlus } from 'transbank-sdk';
 import { CrearTransaccionDto } from './dto/crear-transaccion.dto';
-import { ConfiguracionEnv } from '../config/env.config';
+import { WEBPAY_PLUS_TRANSACTION } from './webpay.provider';
 
 @Injectable()
 export class WebpayService {
-  private readonly transaccion: InstanceType<typeof WebpayPlus.Transaction>;
-
-  constructor(private configService: ConfigService<ConfiguracionEnv>) {
-    const config = this.configService.get('webpay', { infer: true });
-
-    if (!config?.codigoComercio || !config?.claveApi) {
-      throw new Error(
-        'Las variables de entorno de Webpay no están definidas en el .env',
-      );
-    }
-
-    const opciones = new Options(
-      config.codigoComercio,
-      config.claveApi,
-      Environment.Integration,
-    );
-
-    this.transaccion = new WebpayPlus.Transaction(opciones);
-  }
+  constructor(
+    @Inject(WEBPAY_PLUS_TRANSACTION)
+    private readonly transaccion: InstanceType<typeof WebpayPlus.Transaction>,
+  ) { }
 
   async crearTransaccion(dto: CrearTransaccionDto) {
     const { buyOrder, sessionId, amount, returnUrl } = dto;
