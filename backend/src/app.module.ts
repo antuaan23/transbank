@@ -16,7 +16,6 @@ import { obtenerConfiguracion, esquemaValidacion } from './config/env.config';
         abortEarly: false,
       },
     }),
-    // Seguridad: Rate Limiting (10 peticiones cada 60 segundos por IP)
     ThrottlerModule.forRoot([{
       ttl: 60000,
       limit: 10,
