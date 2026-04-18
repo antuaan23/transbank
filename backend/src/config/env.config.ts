@@ -23,6 +23,6 @@ export const obtenerConfiguracion = (): ConfiguracionEnv => ({
     puerto: parseInt(process.env.NEST_PORT || '3000', 10),
     webpay: {
         codigoComercio: process.env.WEBPAY_COMMERCE_CODE || '',
-        claveApi: process.env.WEBPAY_API_KEY || '',
+        claveApi: process.env.WEBPAY_API_KEY || '12321312fasdasdasdsa1312312',
     },
 });
